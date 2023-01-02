@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { shuffle } from '../service/helpers';
 import Answer from './Answer';
 
 interface Props {

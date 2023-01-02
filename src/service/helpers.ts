@@ -1,17 +1,8 @@
 export const shuffle = (arr: string[]): string[] => {
-  let currentIndex = arr.length;
-  let randomIndex: number;
-
-  while (currentIndex != 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    [arr[currentIndex], arr[randomIndex]] = [
-      arr[randomIndex],
-      arr[currentIndex],
-    ];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[randomIndex]] = [arr[randomIndex], arr[i]];
   }
-
   return arr;
 };
 

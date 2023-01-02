@@ -1,5 +1,5 @@
 import Word from './Word';
-import { WordType } from '../models/word';
+import { WordType } from '../models/interface';
 import { shuffle } from '../service/helpers';
 
 const Words: React.FC<{ words: WordType[] }> = ({ words }) => {

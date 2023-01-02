@@ -1,5 +1,5 @@
-export type WordType = {
+export interface WordType {
   image: string;
   wordText: string;
   wordTextForeign: string;
-};
+}

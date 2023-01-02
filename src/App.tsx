@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Logo, Navigation, Words } from './components';
-import { WordType } from './models/word';
+import AddWord from './components/AddWord';
+import { WordType } from './models/interface';
 
 const DUMMY_WORDS: WordType[] = [
   {
@@ -48,12 +49,14 @@ const DUMMY_WORDS: WordType[] = [
 
 const App = () => {
   const [words, setWords] = useState<WordType[]>(DUMMY_WORDS);
+  const [showAddWord, setShowAddWord] = useState(false);
 
   return (
     <>
       <header className="max-w-screen-md mx-auto text-center px-10">
         <Logo />
-        <Navigation />
+        <Navigation isShown={showAddWord} onShow={setShowAddWord} />
+        {showAddWord && <AddWord />}
       </header>
       <main className="max-w-screen-md mx-auto px-10">
         <Words words={words} />
