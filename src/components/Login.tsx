@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import AuthContext from '../context/AuthContext';
 
 interface Props {
   onClose: (active: boolean) => void;
 }
 
 const Login: React.FC<Props> = ({ onClose }) => {
+  const ctx = useContext(AuthContext);
+
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
   const loginHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(e);
+    ctx?.loginUser(email, password);
+    onClose(false);
   };
 
   return (
@@ -33,6 +40,9 @@ const Login: React.FC<Props> = ({ onClose }) => {
               name="email"
               id="email"
               className="rounded text-black outline-none px-2"
+              onChange={(e: React.FormEvent<HTMLInputElement>) =>
+                setEmail(e.currentTarget.value)
+              }
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -42,6 +52,9 @@ const Login: React.FC<Props> = ({ onClose }) => {
               name="password"
               id="password"
               className="rounded text-black outline-none px-2"
+              onChange={(e: React.FormEvent<HTMLInputElement>) =>
+                setPassword(e.currentTarget.value)
+              }
             />
           </div>
           <button className="bg-secondary text-black px-4 py-2 rounded mt-4">

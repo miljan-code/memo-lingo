@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Logo, Navigation, Words } from './components';
 import AddWord from './components/AddWord';
 import { WordType } from './models/interface';
+import AuthContext from './context/AuthContext';
 
 const DUMMY_WORDS: WordType[] = [
   {
