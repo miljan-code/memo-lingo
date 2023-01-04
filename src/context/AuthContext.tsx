@@ -17,7 +17,7 @@ type AuthContextProps = {
   children: React.ReactNode;
 };
 
-const AuthContext = createContext<CTX | null>(null);
+const AuthContext = createContext<CTX>({} as CTX);
 
 export const AuthProvider = ({ children }: AuthContextProps) => {
   const [user, setUser] = useState<User | null>(null);

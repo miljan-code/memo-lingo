@@ -15,9 +15,15 @@ const Word: React.FC<Props> = ({
   correctWord,
 }) => {
   const [isDisabled, setIsDisabled] = useState(false);
+  const [clickedWord, setClickedWord] = useState('');
 
-  const isDisabledHandler = () => {
-    setIsDisabled(true);
+  const isDisabledHandler = (
+    clicked: string,
+    isDisabled: 'disabled' | 'enable'
+  ) => {
+    if (isDisabled === 'disabled') setIsDisabled(true);
+    else if (isDisabled === 'enable') setIsDisabled(false);
+    setClickedWord(clicked);
   };
 
   return (
@@ -34,6 +40,7 @@ const Word: React.FC<Props> = ({
             correctWord={correctWord}
             isDisabled={isDisabled}
             disable={isDisabledHandler}
+            clickedWord={clickedWord}
           />
         ))}
       </div>
