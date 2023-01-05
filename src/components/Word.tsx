@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { WordProps } from '../models/interface';
 import Answer from './Answer';
+import EditWord from './EditWord';
 
 const Word: React.FC<WordProps> = ({
   image,
@@ -10,6 +11,7 @@ const Word: React.FC<WordProps> = ({
 }) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [clickedWord, setClickedWord] = useState('');
+  const [showEdit, setShowEdit] = useState(false);
 
   const isDisabledHandler = (
     clicked: string,
@@ -39,13 +41,17 @@ const Word: React.FC<WordProps> = ({
         ))}
       </div>
       <div className="flex ml-auto items-center gap-3">
-        <button className="text-[18px] bg-primaryDark text-white h-[30px] w-[30px] rounded inline-flex items-center justify-center">
+        <button
+          onClick={() => setShowEdit(true)}
+          className="text-[18px] bg-primaryDark text-white h-[30px] w-[30px] rounded inline-flex items-center justify-center"
+        >
           &#9998;
         </button>
         <button className="text-[30px] bg-primaryDark text-white h-[30px] w-[30px] rounded inline-flex items-center justify-center pb-1">
           &times;
         </button>
       </div>
+      {showEdit && <EditWord showEdit={setShowEdit} />}
     </div>
   );
 };

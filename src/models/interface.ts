@@ -26,3 +26,11 @@ export interface WordProps {
   foreignWords: string[];
   correctWord: string;
 }
+
+export interface AddWordProps {
+  show: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface EditWordProps {
+  showEdit: React.Dispatch<React.SetStateAction<boolean>>;
+}

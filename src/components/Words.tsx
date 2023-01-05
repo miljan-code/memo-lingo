@@ -1,8 +1,9 @@
 import Word from './Word';
 import { WordType } from '../models/types';
 import { shuffle } from '../service/helpers';
+import { DocumentData } from 'firebase/firestore';
 
-const Words: React.FC<{ words: WordType[] }> = ({ words }) => {
+const Words: React.FC<{ words: DocumentData[] }> = ({ words }) => {
   const foreignWords = shuffle(words.map((word) => word.wordTextForeign));
 
   return (

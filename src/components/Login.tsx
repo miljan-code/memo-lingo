@@ -5,8 +5,8 @@ import { LoginProps } from '../models/interface';
 const Login: React.FC<LoginProps> = ({ onClose }) => {
   const { loginUser } = useContext(AuthContext);
 
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const loginHandler = (e: React.FormEvent) => {
     e.preventDefault();

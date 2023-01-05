@@ -1,6 +1,7 @@
 import { User } from 'firebase/auth';
 
 export type WordType = {
+  id?: string;
   image: string;
   wordText: string;
   wordTextForeign: string;
@@ -24,6 +25,12 @@ export type CtxScore = {
 
 export type ScoreContextProps = {
   children?: React.ReactNode;
+};
+
+export type AddWordType = {
+  wordNameEnglish: string;
+  wordNameForeign: string;
+  wordImage: string;
 };
 
 export type { User };
