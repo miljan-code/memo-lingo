@@ -1,8 +1,8 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { Logo, Navigation, Words } from './components';
 import AddWord from './components/AddWord';
-import { WordType } from './models/interface';
-import AuthContext from './context/AuthContext';
+import { WordType } from './models/types';
+import Score from './components/Score';
 
 const DUMMY_WORDS: WordType[] = [
   {
@@ -51,6 +51,11 @@ const DUMMY_WORDS: WordType[] = [
 const App = () => {
   const [words, setWords] = useState<WordType[]>(DUMMY_WORDS);
   const [showAddWord, setShowAddWord] = useState(false);
+  const [_, setReset] = useState(false);
+
+  const resetHandler = () => {
+    setReset((prev) => !prev);
+  };
 
   return (
     <>
@@ -61,6 +66,10 @@ const App = () => {
       </header>
       <main className="max-w-screen-md mx-auto px-10">
         <Words words={words} />
+        <Score
+          words={words.map((word) => word.wordTextForeign)}
+          reset={resetHandler}
+        />
       </main>
     </>
   );

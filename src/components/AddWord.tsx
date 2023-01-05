@@ -1,8 +1,4 @@
-import React from 'react';
-
-interface Props {}
-
-const AddWord: React.FC<Props> = () => {
+const AddWord = () => {
   const addWordHandler = () => {};
 
   return (

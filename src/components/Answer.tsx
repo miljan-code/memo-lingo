@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { ScoreContext } from '../context/ScoreContext';
+import { AnswerProps } from '../models/interface';
 
-interface Props {
-  word: string;
-  correctWord: string;
-  isDisabled: boolean;
-  disable: (clicked: string, isDisabled: 'disabled' | 'enable') => void;
-  clickedWord: string;
-}
-
-const Answer: React.FC<Props> = ({
+const Answer: React.FC<AnswerProps> = ({
   word,
   correctWord,
   isDisabled,
   disable,
   clickedWord,
 }) => {
+  const { addScore } = useContext(ScoreContext);
   const [disabledStyle, setDisabledStyle] = useState('');
 
   const pickAnswerHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    disable(e.currentTarget.innerHTML, 'disabled');
+    const targetWord = e.currentTarget.innerHTML;
+    disable(targetWord, 'disabled');
+    if (targetWord === correctWord) addScore();
   };
 
   useEffect(() => {

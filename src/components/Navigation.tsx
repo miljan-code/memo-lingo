@@ -1,21 +1,17 @@
 import Login from './Login';
 import React, { useState, useContext } from 'react';
 import AuthContext from '../context/AuthContext';
+import { NavigationProps } from '../models/interface';
 
-interface Props {
-  onShow: (show: boolean) => void;
-  isShown: boolean;
-}
-
-const Navigation: React.FC<Props> = ({ onShow, isShown }) => {
+const Navigation: React.FC<NavigationProps> = ({ onShow, isShown }) => {
   const [showLogin, setShowLogin] = useState(false);
 
-  const ctx = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext);
 
   return (
     <>
       <nav className="flex justify-between bg-secondary p-4 rounded text-black">
-        {ctx?.user && (
+        {user && (
           <button
             onClick={() => {
               !isShown && onShow(true);
@@ -26,7 +22,7 @@ const Navigation: React.FC<Props> = ({ onShow, isShown }) => {
             {isShown ? 'Close modal' : 'Add Word'}
           </button>
         )}
-        {!ctx?.user && (
+        {!user && (
           <button
             onClick={() => setShowLogin(true)}
             className="font-bold border-2 border-primaryLight bg-primaryLight py-2 px-4 rounded text-white ml-auto"
@@ -34,9 +30,9 @@ const Navigation: React.FC<Props> = ({ onShow, isShown }) => {
             Login
           </button>
         )}
-        {ctx?.user && (
+        {user && (
           <button
-            onClick={() => ctx?.logoutUser()}
+            onClick={() => logoutUser()}
             className="font-bold border-2 border-primaryLight bg-primaryLight py-2 px-4 rounded text-white ml-auto"
           >
             Logout

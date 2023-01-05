@@ -1,4 +1,4 @@
-const Logo: React.FC = () => {
+const Logo = () => {
   return (
     <h1 className="font-dancing text-[70px] cursor-pointer text-secondary inline-block">
       MemoLingo

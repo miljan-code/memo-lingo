@@ -1,23 +1,13 @@
-import React, { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { User } from 'firebase/auth';
+import { CtxAuth, AuthContextProps, User } from '../models/types';
 import { auth } from '../service/firebase-config';
 
-type CTX = {
-  user: User | null;
-  loginUser: (email: string, password: string) => Promise<void>;
-  logoutUser: () => Promise<void>;
-};
-
-type AuthContextProps = {
-  children: React.ReactNode;
-};
-
-const AuthContext = createContext<CTX>({} as CTX);
+const AuthContext = createContext<CtxAuth>({} as CtxAuth);
 
 export const AuthProvider = ({ children }: AuthContextProps) => {
   const [user, setUser] = useState<User | null>(null);

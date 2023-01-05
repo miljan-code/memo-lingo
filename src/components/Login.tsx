@@ -1,19 +1,16 @@
 import React, { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
+import { LoginProps } from '../models/interface';
 
-interface Props {
-  onClose: (active: boolean) => void;
-}
-
-const Login: React.FC<Props> = ({ onClose }) => {
-  const ctx = useContext(AuthContext);
+const Login: React.FC<LoginProps> = ({ onClose }) => {
+  const { loginUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
   const loginHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    ctx?.loginUser(email, password);
+    loginUser(email, password);
     onClose(false);
   };
 

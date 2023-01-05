@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
+import { WordProps } from '../models/interface';
 import Answer from './Answer';
 
-interface Props {
-  image: string;
-  wordText: string;
-  foreignWords: string[];
-  correctWord: string;
-}
-
-const Word: React.FC<Props> = ({
+const Word: React.FC<WordProps> = ({
   image,
   wordText,
   foreignWords,
