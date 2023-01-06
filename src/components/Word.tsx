@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import { WordProps } from '../models/interface';
 import Answer from './Answer';
 import EditWord from './EditWord';
+import DeleteWord from './DeleteWord';
 
 const Word: React.FC<WordProps> = ({
   image,
   wordText,
   foreignWords,
   correctWord,
+  foreignWord,
 }) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [clickedWord, setClickedWord] = useState('');
   const [showEdit, setShowEdit] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
 
   const isDisabledHandler = (
     clicked: string,
@@ -47,11 +50,20 @@ const Word: React.FC<WordProps> = ({
         >
           &#9998;
         </button>
-        <button className="text-[30px] bg-primaryDark text-white h-[30px] w-[30px] rounded inline-flex items-center justify-center pb-1">
+        <button
+          onClick={() => setShowDelete(true)}
+          className="text-[30px] bg-primaryDark text-white h-[30px] w-[30px] rounded inline-flex items-center justify-center pb-1"
+        >
           &times;
         </button>
       </div>
-      {showEdit && <EditWord showEdit={setShowEdit} />}
+      {showEdit && (
+        <EditWord
+          word={{ image, wordText, foreignWord }}
+          showEdit={setShowEdit}
+        />
+      )}
+      {showDelete && <DeleteWord word={wordText} showDelete={setShowDelete} />}
     </div>
   );
 };

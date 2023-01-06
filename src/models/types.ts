@@ -31,6 +31,7 @@ export type AddWordType = {
   wordNameEnglish: string;
   wordNameForeign: string;
   wordImage: string;
+  wordText: string;
 };
 
 export type { User };

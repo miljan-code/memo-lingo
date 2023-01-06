@@ -11,8 +11,6 @@ const App = () => {
   const { data: words, isLoading, isError, error } = useWordsData();
   if (!words) return <Loading />;
 
-  console.log(words);
-
   const resetHandler = () => {
     setReset((prev) => !prev);
   };

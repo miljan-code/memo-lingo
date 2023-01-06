@@ -3,13 +3,14 @@ import { db } from '../service/firebase-config';
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDocs,
   updateDoc,
 } from 'firebase/firestore';
 import { AddWordType } from '../models/types';
 
-const wordsCollectionRef = collection(db, 'words');
+export const wordsCollectionRef = collection(db, 'words');
 
 const fetchWordsData = async () => {
   const data = await getDocs(wordsCollectionRef);
@@ -21,6 +22,15 @@ const findFields = async (wordName: string) => {
   return data.docs
     .map((doc) => doc.data())
     .find((word) => word.wordText === wordName);
+};
+
+const findId = async (wordName: string) => {
+  const data = await getDocs(wordsCollectionRef);
+  const docs: any = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+  const desiredId: string = docs.find(
+    (word: any) => word.wordText === wordName
+  ).id;
+  return desiredId;
 };
 
 export const useWordsData = () => useQuery(['words'], fetchWordsData);
@@ -43,17 +53,37 @@ export const useAddWords = () => {
 export const useModifyWord = () => {
   const queryClient = useQueryClient();
   return useMutation(
-    async ({ wordNameEnglish, wordNameForeign, wordImage }: AddWordType) => {
-      const wordDoc = doc(db, 'words', wordNameEnglish);
-      const fields = await findFields(wordNameEnglish);
+    async ({
+      wordNameEnglish,
+      wordNameForeign,
+      wordImage,
+      wordText,
+    }: AddWordType) => {
+      const id = await findId(wordText);
+      const wordDoc = doc(db, 'words', id);
+      const fields = await findFields(wordText);
+
       if (!fields) return null;
-      fields.wordText = wordNameEnglish;
-      fields.wordTextForeign = wordNameForeign;
-      fields.image = wordImage;
+
+      if (wordNameEnglish) fields.wordText = wordNameEnglish;
+      if (wordNameForeign) fields.wordTextForeign = wordNameForeign;
+      if (wordImage) fields.image = wordImage;
+
       await updateDoc(wordDoc, fields);
     },
     {
       onSuccess: () => queryClient.invalidateQueries(['words']),
     }
+  );
+};
+
+export const useDeleteWord = () => {
+  const queryClient = useQueryClient();
+  return useMutation(
+    async ({ word }: { word: string }) => {
+      const id = await findId(word);
+      deleteDoc(doc(db, 'words', id));
+    },
+    { onSuccess: () => queryClient.invalidateQueries(['words']) }
   );
 };

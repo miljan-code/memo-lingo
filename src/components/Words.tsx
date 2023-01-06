@@ -20,6 +20,7 @@ const Words: React.FC<{ words: DocumentData[] }> = ({ words }) => {
             wordText={word.wordText}
             correctWord={word.wordTextForeign}
             foreignWords={shuffle(words)}
+            foreignWord={word.wordTextForeign}
           />
         );
       })}

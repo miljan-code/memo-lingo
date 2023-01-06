@@ -19,7 +19,7 @@ const Navigation: React.FC<NavigationProps> = ({ onShow, isShown }) => {
             }}
             className="font-bold border-2 border-primaryLight bg-primaryLight py-2 px-4 rounded text-white"
           >
-            {isShown ? 'Close modal' : 'Add Word'}
+            {isShown ? 'Close form' : 'Add Word'}
           </button>
         )}
         {!user && (

@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface AnswerProps {
   word: string;
   correctWord: string;
@@ -7,7 +9,7 @@ export interface AnswerProps {
 }
 
 export interface LoginProps {
-  onClose: (active: boolean) => void;
+  onClose: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface NavigationProps {
@@ -25,6 +27,7 @@ export interface WordProps {
   wordText: string;
   foreignWords: string[];
   correctWord: string;
+  foreignWord: string;
 }
 
 export interface AddWordProps {
@@ -33,4 +36,19 @@ export interface AddWordProps {
 
 export interface EditWordProps {
   showEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  word: {
+    image: string;
+    wordText: string;
+    foreignWord: string;
+  };
+}
+
+export interface DeleteWordProps {
+  showDelete: React.Dispatch<React.SetStateAction<boolean>>;
+  word: string;
+}
+
+export interface ModalProps {
+  closeModalFn?: React.Dispatch<React.SetStateAction<boolean>>;
+  children?: React.ReactNode;
 }
