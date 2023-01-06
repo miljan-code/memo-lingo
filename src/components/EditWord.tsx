@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { EditWordProps } from '../models/interface';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { useModifyWord } from '../hooks/useWordsData';
-import Modal from './Modal';
+import { EditWordProps } from '../models/interface';
+import { Modal } from './';
 
 const EditWord: React.FC<EditWordProps> = ({ showEdit, word }) => {
   const [wordNameEnglish, setWordNameEnglish] = useState('');
@@ -9,6 +10,10 @@ const EditWord: React.FC<EditWordProps> = ({ showEdit, word }) => {
   const [wordImage, setWordImage] = useState('');
 
   const { mutate: modifyWord } = useModifyWord();
+
+  const { user } = useContext(AuthContext);
+
+  if (!user) return <Modal closeModalFn={showEdit}>Please login first</Modal>;
 
   const { wordText, image, foreignWord } = word;
 

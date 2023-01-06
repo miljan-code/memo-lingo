@@ -4,12 +4,12 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { CtxAuth, AuthContextProps, User } from '../models/types';
+import { CtxAuth, ContextProps, User } from '../models/types';
 import { auth } from '../service/firebase-config';
 
-const AuthContext = createContext<CtxAuth>({} as CtxAuth);
+export const AuthContext = createContext<CtxAuth>({} as CtxAuth);
 
-export const AuthProvider = ({ children }: AuthContextProps) => {
+export const AuthProvider = ({ children }: ContextProps) => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -30,5 +30,3 @@ export const AuthProvider = ({ children }: AuthContextProps) => {
     <AuthContext.Provider value={ctxData}>{children}</AuthContext.Provider>
   );
 };
-
-export default AuthContext;

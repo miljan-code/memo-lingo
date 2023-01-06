@@ -1,7 +1,7 @@
-import Login from './Login';
-import React, { useState, useContext } from 'react';
-import AuthContext from '../context/AuthContext';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { NavigationProps } from '../models/interface';
+import { Login } from './';
 
 const Navigation: React.FC<NavigationProps> = ({ onShow, isShown }) => {
   const [showLogin, setShowLogin] = useState(false);

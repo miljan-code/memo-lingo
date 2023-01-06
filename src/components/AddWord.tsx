@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useAddWords } from '../hooks/useWordsData';
 import { AddWordProps } from '../models/interface';
 

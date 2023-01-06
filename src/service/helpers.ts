@@ -5,10 +5,3 @@ export const shuffle = (arr: string[]): string[] => {
   }
   return arr;
 };
-
-export const timeout = (sec: number) =>
-  new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, sec * 1000);
-  });

@@ -1,9 +1,9 @@
 import { createContext, useState } from 'react';
-import { CtxScore, ScoreContextProps } from '../models/types';
+import { CtxScore, ContextProps } from '../models/types';
 
 export const ScoreContext = createContext<CtxScore>({} as CtxScore);
 
-export const ScoreProvider = ({ children }: ScoreContextProps) => {
+export const ScoreProvider = ({ children }: ContextProps) => {
   const [score, setScore] = useState(0);
 
   const addScore = () => {

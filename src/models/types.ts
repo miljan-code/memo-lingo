@@ -13,7 +13,7 @@ export type CtxAuth = {
   logoutUser: () => Promise<void>;
 };
 
-export type AuthContextProps = {
+export type ContextProps = {
   children: React.ReactNode;
 };
 
@@ -21,10 +21,6 @@ export type CtxScore = {
   score: number;
   addScore: () => void;
   resetScore: () => void;
-};
-
-export type ScoreContextProps = {
-  children?: React.ReactNode;
 };
 
 export type AddWordType = {

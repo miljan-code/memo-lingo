@@ -1,14 +1,13 @@
-import Logo from './Logo';
-
 const Loading = () => {
   return (
     <>
-      <header className="max-w-screen-md mx-auto text-center px-10">
-        <Logo />
-      </header>
-      <main className="max-w-screen-md mx-auto px-10">
-        <p>Loading...</p>
-      </main>
+      <div className="flex h-screen">
+        <div className="m-auto">
+          <h1 className="font-dancing text-[70px] cursor-pointer text-secondary inline-block animate-pulse">
+            MemoLingo
+          </h1>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,6 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { ScoreContext } from '../context/ScoreContext';
+import { AuthContext } from '../context/AuthContext';
 import { AnswerProps } from '../models/interface';
+import { Modal } from './';
 
 const Answer: React.FC<AnswerProps> = ({
   word,
@@ -9,10 +11,14 @@ const Answer: React.FC<AnswerProps> = ({
   disable,
   clickedWord,
 }) => {
-  const { addScore } = useContext(ScoreContext);
   const [disabledStyle, setDisabledStyle] = useState('');
+  const [showWarning, setShowWarning] = useState(false);
+
+  const { addScore } = useContext(ScoreContext);
+  const { user } = useContext(AuthContext);
 
   const pickAnswerHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!user) return setShowWarning(true);
     const targetWord = e.currentTarget.innerHTML;
     disable(targetWord, 'disabled');
     if (targetWord === correctWord) addScore();
@@ -35,6 +41,9 @@ const Answer: React.FC<AnswerProps> = ({
       >
         {word}
       </button>
+      {showWarning && (
+        <Modal closeModalFn={setShowWarning}>Please, login first.</Modal>
+      )}
     </>
   );
 };

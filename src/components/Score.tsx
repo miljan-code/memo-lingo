@@ -6,7 +6,7 @@ const Score: React.FC<ScoreProps> = ({ words, reset }) => {
   const { score, resetScore } = useContext(ScoreContext);
 
   return (
-    <div className="flex gap-5 items-center">
+    <div className="flex gap-5 items-center mb-10">
       <button
         className="bg-secondary px-4 py-2 rounded"
         onClick={() => {
@@ -19,7 +19,11 @@ const Score: React.FC<ScoreProps> = ({ words, reset }) => {
       <p className="text-white">
         Score: {score}/{words.length}
       </p>
-      {score === words.length && <p className="text-white">🔥 Play again?</p>}
+      {score === words.length && (
+        <p className="text-white">
+          🔥 Amazing score! Make sure to come back tomorrow!
+        </p>
+      )}
     </div>
   );
 };

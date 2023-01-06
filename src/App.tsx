@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import { Words, Loading } from './components';
-import Score from './components/Score';
 import { useWordsData } from './hooks/useWordsData';
-import Header from './components/Header';
+import { Words, Loading, Score, Header } from './components';
 
 const App = () => {
   const [_, setReset] = useState(false);
 
-  const { data: words, isLoading, isError, error } = useWordsData();
+  const { data: words } = useWordsData();
   if (!words) return <Loading />;
 
   const resetHandler = () => {

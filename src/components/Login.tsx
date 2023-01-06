@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
-import AuthContext from '../context/AuthContext';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { LoginProps } from '../models/interface';
-import Modal from './Modal';
+import { Modal } from './';
 
 const Login: React.FC<LoginProps> = ({ onClose }) => {
   const { loginUser } = useContext(AuthContext);

@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { WordProps } from '../models/interface';
-import Answer from './Answer';
-import EditWord from './EditWord';
-import DeleteWord from './DeleteWord';
+import { Answer, EditWord, DeleteWord } from './';
 
 const Word: React.FC<WordProps> = ({
   image,

@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { DeleteWordProps } from '../models/interface';
-import Modal from './Modal';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { useDeleteWord } from '../hooks/useWordsData';
-import AuthContext from '../context/AuthContext';
+import { DeleteWordProps } from '../models/interface';
+import { Modal } from './';
 
 const DeleteWord: React.FC<DeleteWordProps> = ({ showDelete, word }) => {
   const { mutate: deleteWord } = useDeleteWord();
@@ -26,7 +26,7 @@ const DeleteWord: React.FC<DeleteWordProps> = ({ showDelete, word }) => {
           </button>
         </div>
       )}
-      {!user && <p>Please login first...</p>}
+      {!user && <p>Please login first</p>}
     </Modal>
   );
 };

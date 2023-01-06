@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface AnswerProps {
   word: string;
   correctWord: string;
@@ -49,6 +47,10 @@ export interface DeleteWordProps {
 }
 
 export interface ModalProps {
-  closeModalFn?: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModalFn: React.Dispatch<React.SetStateAction<boolean>>;
   children?: React.ReactNode;
+}
+
+export interface HowProps {
+  showHowTo: React.Dispatch<React.SetStateAction<boolean>>;
 }
