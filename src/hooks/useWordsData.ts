@@ -59,6 +59,7 @@ export const useModifyWord = () => {
       wordImage,
       wordText,
     }: AddWordType) => {
+      if (!wordText) return;
       const id = await findId(wordText);
       const wordDoc = doc(db, 'words', id);
       const fields = await findFields(wordText);
