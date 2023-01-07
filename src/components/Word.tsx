@@ -24,12 +24,12 @@ const Word: React.FC<WordProps> = ({
   };
 
   return (
-    <div className="flex p-5 bg-secondary mb-3 rounded items-center">
-      <div className="flex gap-5 items-center w-[200px]">
+    <div className="flex flex-col sm:flex-row p-5 bg-secondary mb-3 rounded items-center">
+      <div className="flex gap-5 items-center sm:w-[200px] mb-5 sm:mb-0">
         <img src={image} alt={wordText} className="w-20 h-20" />
         <h3 className="text-black font-bold">{wordText}</h3>
       </div>
-      <div className="flex gap-5 items-center">
+      <div className="flex gap-5 items-center mb-10 sm:mb-0">
         {foreignWords.map((word) => (
           <Answer
             key={crypto.randomUUID()}
@@ -41,10 +41,10 @@ const Word: React.FC<WordProps> = ({
           />
         ))}
       </div>
-      <div className="flex ml-auto items-center gap-3">
+      <div className="flex sm:ml-auto items-center gap-3">
         <button
           onClick={() => setShowEdit(true)}
-          className="text-[18px] bg-primaryDark text-white h-[30px] w-[30px] rounded inline-flex items-center justify-center"
+          className="text-[18px] bg-primaryDark text-white h-[30px] w-[30px] rounded inline-flex items-center justify-center ml-5"
         >
           &#9998;
         </button>

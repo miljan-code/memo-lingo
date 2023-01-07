@@ -37,7 +37,7 @@ const Answer: React.FC<AnswerProps> = ({
       <button
         onClick={pickAnswerHandler}
         disabled={isDisabled}
-        className={`bg-primaryLight ${disabledStyle} px-4 py-2 rounded text-white max-w-[150px] sm:min-w-[100px]`}
+        className={`bg-primaryLight ${disabledStyle} px-4 py-2 rounded text-white text-2xl ss:text-[1.6rem] sm:max-w-[150px] sm:min-w-[100px]`}
       >
         {word}
       </button>
