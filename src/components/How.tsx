@@ -1,9 +1,9 @@
-import { HowProps } from '../models/interface';
+import { HowProps } from "../models/interface";
 
 const How: React.FC<HowProps> = ({ showHowTo }) => {
   return (
     <div className="mt-5 relative bg-secondary rounded text-left pl-20 pt-5 pb-5">
-      <p className="absolute top-2 left-2 bg-red-800 rounded-full px-[1px]">
+      <p className="absolute top-2 left-2 bg-red-800 rounded-full px-[8px]">
         &#10069;
       </p>
       <p

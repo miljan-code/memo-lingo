@@ -16,9 +16,9 @@ const Modal: React.FC<ModalProps> = ({ closeModalFn, children }) => {
     <>
       <div
         onClick={() => closeModalFn(false)}
-        className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center"
+        className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center z-10"
       ></div>
-      <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] py-10 px-20 bg-primaryDark rounded text-white">
+      <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] py-10 px-20 bg-primaryDark rounded text-white z-10">
         <p
           onClick={() => closeModalFn(false)}
           className="absolute top-0 right-2 text-5xl cursor-pointer"
