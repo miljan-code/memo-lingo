@@ -1,15 +1,18 @@
-import React, { useEffect } from 'react';
-import { ModalProps } from '../models/interface';
+import React, { useEffect } from "react";
+import { ModalProps } from "../models/interface";
 
 const Modal: React.FC<ModalProps> = ({ closeModalFn, children }) => {
   useEffect(() => {
-    const closeModal = (e: KeyboardEvent) => {
-      if (e.code === 'Escape') {
+    const closeModal: any = (e: KeyboardEvent) => {
+      if (e.code === "Escape") {
         closeModalFn(false);
       }
     };
-    window.addEventListener('keydown', closeModal);
-    return () => window.removeEventListener('keydown', closeModal);
+
+    window.addEventListener("keydown", closeModal);
+    window.scrollTo(0, 0);
+
+    return () => window.removeEventListener("keydown", closeModal);
   }, []);
 
   return (
