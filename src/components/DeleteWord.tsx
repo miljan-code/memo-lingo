@@ -1,8 +1,8 @@
-import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { useDeleteWord } from '../hooks/useWordsData';
-import { DeleteWordProps } from '../models/interface';
-import { Modal } from './';
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { useDeleteWord } from "../hooks/useWordsData";
+import { DeleteWordProps } from "../models/interface";
+import { Modal } from "./";
 
 const DeleteWord: React.FC<DeleteWordProps> = ({ showDelete, word }) => {
   const { mutate: deleteWord } = useDeleteWord();
@@ -15,7 +15,12 @@ const DeleteWord: React.FC<DeleteWordProps> = ({ showDelete, word }) => {
 
   return (
     <Modal closeModalFn={showDelete}>
-      {user && (
+      {user?.email === "demo@demo.demo" && (
+        <div className="text-center w-[20rem]">
+          <p>Sorry, delete option is not allowed in demo mode.</p>
+        </div>
+      )}
+      {user?.email !== "demo@demo.demo" && (
         <div className="text-center">
           <h3 className="mb-6">Are you sure?</h3>
           <button
